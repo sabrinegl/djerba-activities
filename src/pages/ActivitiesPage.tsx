@@ -5,7 +5,6 @@ import ActivityCard from '../components/ActivityCard';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { T, t } from '../i18n/translations';
 import type { Lang } from '../i18n/translations';
-import React from 'react';
 
 interface Props {
   onBook: (activity: Activity) => void;

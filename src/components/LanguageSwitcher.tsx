@@ -1,4 +1,3 @@
-import React from 'react';
 import { LANGUAGES } from '../i18n/translations';
 import type { Lang } from '../i18n/translations';
 
