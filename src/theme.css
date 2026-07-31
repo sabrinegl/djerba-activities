@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════
+   Djerba Activities — Ocean Blue & White Theme
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* ── Core backgrounds ── */
+  --bg-deep:      #060f1e;   /* page background (deep navy) */
+  --bg-card:      #0d1f35;   /* card / section background  */
+  --bg-elevated:  #112640;   /* elevated surface            */
+  --bg-hover:     #16304f;   /* hover state                 */
+
+  /* ── Accent — ocean teal/cyan ── */
+  --accent:       #0ea5e9;   /* primary accent (sky-500)    */
+  --accent-light: #38bdf8;   /* lighter variant             */
+  --accent-dim:   rgba(14,165,233,0.18);
+  --accent-border:rgba(14,165,233,0.25);
+  --accent-glow:  rgba(14,165,233,0.30);
+
+  /* ── CTA coral / orange ── */
+  --cta:          #f97316;   /* call-to-action orange       */
+  --cta-glow:     rgba(249,115,22,0.28);
+
+  /* ── Text ── */
+  --text-primary: #f0f9ff;   /* white-sand                 */
+  --text-secondary:#94a3b8;  /* muted blue-gray            */
+  --text-muted:   #475569;   /* very muted                 */
+  --text-accent:  #38bdf8;   /* accent text                */
+
+  /* ── Borders ── */
+  --border-subtle: rgba(14,165,233,0.12);
+  --border-mid:    rgba(14,165,233,0.25);
+  --border-strong: rgba(14,165,233,0.55);
+
+  /* ── Status ── */
+  --green:        #25d366;   /* WhatsApp green — keep      */
+  --green-bg:     rgba(37,211,102,0.08);
+  --green-border: rgba(37,211,102,0.22);
+  --red-required: #f87171;
+
+  /* ── Typography ── */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Radius ── */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+}
+
+/* ── Global reset for the app ── */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+/* ── Reusable utility classes ── */
+.ocean-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.ocean-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 8px 32px rgba(14,165,233,0.10);
+}
+
+.ocean-input {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  color-scheme: dark;
+}
+.ocean-input:focus {
+  border-color: var(--accent);
+}
+
+.ocean-label {
+  color: var(--text-accent);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.accent-label {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ── Shimmer animation for hero text ── */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Float animation for hero icons ── */
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ── Step indicator active state ── */
+.step-active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #000 !important;
+}
