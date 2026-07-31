@@ -34,49 +34,49 @@ export interface Pack {
 
 export const ACTIVITIES: Activity[] = [
   {
-    id: 1, tag: 'Populaire', title: 'Balade en Mer',
+    id: 1, title: 'Balade en Mer',
     desc: "Naviguez en liberté sur les eaux turquoise de Djerba. Profitez de la beauté de la mer et des paysages côtiers à bord de notre bateau privatisé.",
     price: '150€', unit: '/ sortie', category: 'Mer', points: 80,
     img: baladeMer
   },
   {
-    id: 3, tag: 'Aventure', title: 'Excursion Désert',
+    id: 3, title: 'Excursion Désert',
     desc: "Partez à l'aventure au cœur du désert tunisien et découvrez des paysages uniques entre dunes dorées, oasis et villages traditionnels. Une expérience authentique entre découverte, culture et dépaysement.",
     price: '80€', unit: '/ pers.', category: 'Désert', points: 60,
     img: desert
   },
   {
-    id: 4, tag: 'Aventure', title: 'Balade Cheval • Chameau • Calèche',
+    id: 4, title: 'Balade Cheval • Chameau • Calèche',
     desc: "Profitez d'une balade exceptionnelle pour explorer les magnifiques paysages de Djerba. Plages, palmeraies et couchers de soleil — un moment relaxant à vivre.",
     price: '80€', unit: '/ pers.', category: 'Désert', points: 55,
     img: chameau
   },
   {
-    id: 5, tag: 'Découverte', title: "Tour de l'Île",
+    id: 5, title: "Tour de l'Île",
     desc: "Découvrez les incontournables de Djerba à travers un circuit riche en histoire, traditions et paysages. Explorez les villages typiques, marchés locaux et sites emblématiques de l'île.",
     price: '80€', unit: '/ pers.', category: 'Désert', points: 40,
     img: tourIle
   },
   {
-    id: 7, tag: 'Populaire', title: 'Excursion Quads',
+    id: 7, title: 'Excursion Quads',
     desc: "Faites le plein d'adrénaline avec une excursion en quad à travers pistes, dunes et chemins sauvages. Une activité idéale pour les amateurs d'aventure et de sensations fortes.",
     price: '30€', unit: '/ pers.', category: 'Mobilité', points: 50,
     img: quads
   },
   {
-    id: 9, tag: 'Aventure', title: 'Sports Nautiques',
+    id: 9, title: 'Sports Nautiques',
     desc: "Vivez des moments inoubliables en mer avec nos activités nautiques : jet ski, parachute ascensionnel, bouée tractée et bien plus encore. Sensations, fun et soleil garantis.",
     price: '45€', unit: '/ pers.', category: 'Mer', points: 60,
     img: nautique
   },
   {
-    id: 10, tag: 'Culture', title: 'Atelier Poterie',
+    id: 10, title: 'Atelier Poterie',
     desc: "Initiez-vous à l'artisanat traditionnel tunisien à travers un atelier de poterie convivial et créatif. Découvrez le savoir-faire local et créez votre propre souvenir unique.",
     price: '45€', unit: '/ pers.', category: 'Gastronomie', points: 45,
     img: poterie
   },
   {
-    id: 13, tag: 'Culture', title: 'Découverte Culturelle',
+    id: 13, title: 'Découverte Culturelle',
     desc: "Plongez dans l'histoire, les traditions et les saveurs de Djerba. Explorez le patrimoine local, l'artisanat traditionnel et découvrez la richesse de la gastronomie tunisienne.",
     price: '40€', unit: '/ pers.', category: 'Gastronomie', points: 55,
     img: culturel
