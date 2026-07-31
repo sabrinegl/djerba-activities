@@ -2,11 +2,15 @@
   --gold:        #C9A84C;
   --gold-light:  #F5E07A;
   --gold-dark:   #8B6914;
-  --bg:          #060c06;
-  --bg-card:     #0e1a0e;
-  --bg-dark:     #0a140a;
-  --text-muted:  #6a8a6a;
-  --text-dim:    #4a6a4a;
+
+  --bg:          #081018;
+  --bg-card:     #101B27;
+  --bg-dark:     #0B141F;
+
+  --text-muted:  #C5CED8;
+  --text-dim:    #8E9AA8;
+
+  --border:      rgba(255,255,255,.08);
   --green-deep:  #0f1f0f;
 
   /* Ionic overrides */

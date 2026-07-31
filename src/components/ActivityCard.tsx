@@ -34,15 +34,15 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        background: '#0e1a0e',
+        background: '#07121F',
         borderRadius: 16,
         overflow: 'hidden',
-        border: `1px solid ${hov ? '#C9A84C' : 'rgba(201,168,76,0.12)'}`,
-        transition: 'all 0.4s cubic-bezier(.23,1,.32,1)',
-        transform: inView ? (hov ? 'translateY(-5px)' : 'none') : 'translateY(30px)',
+        border: `1px solid ${hov ? '#D6B25E' : 'rgba(214,178,94,.15)'}`,
+        transition: 'all .35s ease',
+        transform: inView ? (hov ? 'translateY(-8px) scale(1.02)' : 'scale(1)') : 'translateY(30px)',
         opacity: inView ? 1 : 0,
         transitionDelay: `${i * 0.07}s`,
-        boxShadow: hov ? '0 14px 40px rgba(201,168,76,0.13)' : 'none',
+        boxShadow: hov ? '0 18px 40px rgba(0,0,0,.35)' : '0 6px 18px rgba(0,0,0,.15)',
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'column',
@@ -61,14 +61,6 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
           position: 'absolute', inset: 0,
           background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent 55%)',
         }} />
-        <span style={{
-          position: 'absolute', top: 10, right: 10,
-          background: 'rgba(201,168,76,0.9)', color: '#000',
-          fontSize: 9, fontWeight: 800, padding: '3px 9px',
-          borderRadius: 20, letterSpacing: 1, textTransform: 'uppercase',
-        }}>
-          {a.tag}
-        </span>
       </div>
 
       {/* Body */}
@@ -80,7 +72,7 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
           {a.title}
         </h3>
         <p style={{
-          margin: '0 0 14px', color: '#6a8a6a',
+          margin: '0 0 14px', color:'#CBD5E1',
           fontSize: 12.5, lineHeight: 1.6, flex: 1,
         }}>
           {a.desc}
@@ -88,12 +80,12 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <span style={{
-              color: '#C9A84C', fontWeight: 800, fontSize: 17,
+              color: '#38BDF8', fontWeight: 800, fontSize: 17,
               fontFamily: "'Playfair Display', serif",
             }}>
               {a.price}
             </span>
-            <span style={{ color: '#4a6a4a', fontSize: 11, marginLeft: 4 }}>
+            <span style={{ color: '#94A3B8', fontSize: 11, marginLeft: 4 }}>
               {a.unit}
             </span>
           </div>
@@ -101,9 +93,12 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
           {/* ✅ Clicking this button triggers the booking flow directly */}
           <IonButton
             size="small"
-            fill={hov ? 'solid' : 'outline'}
-            color="warning"
-            style={{ '--border-radius': '20px', fontSize: 11 } as React.CSSProperties}
+            fill="outline"
+            style={{
+                '--border-color':'#D6B25E',
+                '--color':'#D6B25E',
+                '--border-radius':'22px'
+            } as React.CSSProperties}
             onClick={(e) => {
               e.stopPropagation(); // prevent card click bubbling
               if (onBook) onBook(a);
