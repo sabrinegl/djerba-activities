@@ -34,21 +34,33 @@ export interface Pack {
 
 export const ACTIVITIES: Activity[] = [
   {
-    id: 1, title: 'Balade en Mer',
-    desc: "Naviguez en liberté sur les eaux turquoise de Djerba. Profitez de la beauté de la mer et des paysages côtiers à bord de notre bateau privatisé.",
-    price: '150€', unit: '/ sortie', category: 'Mer', points: 80,
+    id: 1, title: 'Balade en bateau',
+    desc: "Prenez le large et découvrez les eaux cristallines de Djerba. Profitez d'une balade relaxante le long des côtes et gardez l'œil ouvert : les dauphins font parfois leur apparition pour rendre cette sortie encore plus magique.",
+    price: '140€ (475 dt)', unit: '/ pers. · 1h30 · max 6 pers.', category: 'Mer', points: 80,
     img: baladeMer
   },
   {
     id: 3, title: 'Excursion Désert',
     desc: "Partez à l'aventure au cœur du désert tunisien et découvrez des paysages uniques entre dunes dorées, oasis et villages traditionnels. Une expérience authentique entre découverte, culture et dépaysement.",
-    price: '80€', unit: '/ pers.', category: 'Désert', points: 60,
+    price: 'Sur demande', unit: '/ 1 à 2 jours · max 5 pers.', category: 'Désert', points: 60,
     img: desert
   },
   {
-    id: 4, title: 'Balade Cheval • Chameau • Calèche',
-    desc: "Profitez d'une balade exceptionnelle pour explorer les magnifiques paysages de Djerba. Plages, palmeraies et couchers de soleil — un moment relaxant à vivre.",
-    price: '80€', unit: '/ pers.', category: 'Désert', points: 55,
+    id: 4, title: 'Balade à Cheval',
+    desc: "Profitez d'une balade exceptionnelle à cheval pour explorer les magnifiques paysages de Djerba. Plages, palmeraies et couchers de soleil — un moment relaxant à vivre.",
+    price: '20€ (70dt)', unit: '/ pers. · 1h30', category: 'Désert', points: 55,
+    img: chameau
+  },
+  {
+    id: 6, title: 'Balade à Dromadaire',
+    desc: "Vivez une balade traditionnelle à dromadaire à travers les paysages typiques de Djerba, entre plages et palmeraies.",
+    price: '20€ (70dt)', unit: '/ pers. · 1h', category: 'Désert', points: 55,
+    img: chameau
+  },
+  {
+    id: 8, title: 'Balade en Calèche',
+    desc: "Découvrez Djerba à un rythme paisible à bord d'une calèche traditionnelle, idéale pour profiter en famille ou entre amis des paysages de l'île.",
+    price: '45€', unit: '/ pers. · 1h30 · max 6 pers.', category: 'Désert', points: 50,
     img: chameau
   },
   {
@@ -60,19 +72,25 @@ export const ACTIVITIES: Activity[] = [
   {
     id: 7, title: 'Excursion Quads',
     desc: "Faites le plein d'adrénaline avec une excursion en quad à travers pistes, dunes et chemins sauvages. Une activité idéale pour les amateurs d'aventure et de sensations fortes.",
-    price: '30€', unit: '/ pers.', category: 'Mobilité', points: 50,
+    price: '25€ / 45€', unit: 'solo / duo · 1h30', category: 'Mobilité', points: 50,
     img: quads
   },
   {
-    id: 9, title: 'Sports Nautiques',
-    desc: "Vivez des moments inoubliables en mer avec nos activités nautiques : jet ski, parachute ascensionnel, bouée tractée et bien plus encore. Sensations, fun et soleil garantis.",
-    price: '45€', unit: '/ pers.', category: 'Mer', points: 60,
+    id: 9, title: 'Jet-Ski',
+    desc: "Sensations garanties à bord de nos jet-skis pour explorer le littoral de Djerba à toute vitesse.",
+    price: '85€ / 110€', unit: 'solo / duo · 1h30 (30 min à 45€)', category: 'Mer', points: 60,
+    img: nautique
+  },
+  {
+    id: 11, title: 'Parachute Ascensionnel',
+    desc: "Envolez-vous au-dessus de la mer de Djerba pour une vue imprenable, en duo ou en trio.",
+    price: '45€ / 60€', unit: 'duo / trio · 10 min', category: 'Mer', points: 55,
     img: nautique
   },
   {
     id: 10, title: 'Atelier Poterie',
     desc: "Initiez-vous à l'artisanat traditionnel tunisien à travers un atelier de poterie convivial et créatif. Découvrez le savoir-faire local et créez votre propre souvenir unique.",
-    price: '45€', unit: '/ pers.', category: 'Gastronomie', points: 45,
+    price: '7€ / 15€', unit: 'enfant / adulte · 1h - 1h30', category: 'Gastronomie', points: 45,
     img: poterie
   },
   {
