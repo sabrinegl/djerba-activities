@@ -112,7 +112,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
     borderRadius: 'var(--r-sm)', padding: '14px 16px',
     color: 'var(--text-primary)', fontSize: 16, outline: 'none',
     fontFamily: 'var(--font-serif)', boxSizing: 'border-box',
-    transition: 'border-color 0.3s', colorScheme: 'dark' as const,
+    transition: 'border-color 0.3s', colorScheme: (document.documentElement.getAttribute('data-theme') || 'dark') as 'dark' | 'light',
     letterSpacing: 2, textTransform: 'uppercase' as const, textAlign: 'center' as const,
   };
 

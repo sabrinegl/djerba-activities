@@ -110,9 +110,9 @@ export const REVIEWS: Review[] = [
 export const PACKS: Pack[] = [
   { name: 'Essentiel', accent: '#7a9a7a', badge: '', price: '99€',
     features: ['1 sortie Jet-Ski (30 min)', 'Livraison repas incluse', 'Support WhatsApp', 'Transfert aéroport'] },
-  { name: 'VIP', accent: '#C9A84C', badge: '⭐ Populaire', price: '199€',
+  { name: 'VIP', accent: '#C9A84C', badge: '⭐ Populaire', price: '269€',
     features: ['Bateau privatisé ½ journée', 'Jet-Ski illimité 1h', 'Brunch VIP inclus', 'Location voiture 1 jour', 'Support 24/7'] },
-  { name: 'Prestige', accent: '#F5E07A', badge: '👑 Best', price: '349€',
+  { name: 'Prestige', accent: '#F5E07A', badge: '👑 Best', price: '745€',
     features: ['Bateau privatisé journée', 'Jet-Ski illimité', 'Excursion désert 2j', 'Brunch + Dîner VIP', 'Location voiture 3j', 'Guide privé'] },
 ];
 

@@ -14,8 +14,8 @@ export default function LanguageSwitcher({ lang, setLang }: Props) {
       alignItems: 'center',
       gap: 4,
       padding: '8px 18px',
-      background: '#070f1c',
-      borderBottom: '1px solid rgba(14,165,233,0.12)',
+      background: 'var(--bg-card)',
+      borderBottom: '1px solid var(--border-subtle)',
     }}>
       {LANGUAGES.map(({ code, flag, label }) => {
         const active = lang === code;
@@ -27,8 +27,8 @@ export default function LanguageSwitcher({ lang, setLang }: Props) {
             aria-label={`Switch to ${label}`}
             aria-pressed={active}
             style={{
-              background: active ? 'rgba(14,165,233,0.15)' : 'transparent',
-              border: `1px solid ${active ? '#0ea5e9' : 'transparent'}`,
+              background: active ? 'var(--accent-dim)' : 'transparent',
+              border: `1px solid ${active ? 'var(--accent)' : 'transparent'}`,
               borderRadius: 6,
               padding: '5px 12px',
               cursor: 'pointer',
@@ -36,19 +36,19 @@ export default function LanguageSwitcher({ lang, setLang }: Props) {
               alignItems: 'center',
               gap: 6,
               transition: 'all 0.2s',
-              color: active ? '#e0f2fe' : '#4a6a8a',
+              color: active ? 'var(--text-primary)' : 'var(--text-muted)',
               fontWeight: active ? 600 : 400,
               fontSize: 13,
             }}
             onMouseEnter={e => {
               if (!active) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#94c8e8';
-                (e.currentTarget as HTMLButtonElement).style.background = 'rgba(14,165,233,0.07)';
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)';
+                (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-hover)';
               }
             }}
             onMouseLeave={e => {
               if (!active) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#4a6a8a';
+                (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-muted)';
                 (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
               }
             }}

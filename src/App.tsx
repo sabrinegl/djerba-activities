@@ -2,6 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import { IonApp } from '@ionic/react';
 import { useLanguage } from './hooks/useLanguage';
+import { useTheme } from './hooks/useTheme';
+import ThemeToggle from './components/ThemeToggle';
 import HomePage from './pages/HomePage';
 import ActivitiesPage from './pages/ActivitiesPage';
 import PackagesPage from './pages/PackagesPage';
@@ -10,7 +12,6 @@ import PackageBookingPage from './pages/PackageBookingPage';
 import ReviewPage from './pages/ReviewPage';
 import RewardsPage from './pages/RewardsPage';
 import type { Activity, Pack } from './data/data';
-import './theme.css';
 
 const TABS = [
   { id: 'home',       label: 'Accueil'   },
@@ -74,6 +75,7 @@ const TAB_ICONS: Record<string, React.ReactElement> = {
 
 export default function App() {
   const { lang, setLang } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [tab, setTabState]              = useState('home');
   const [preselected, setPreselected]   = useState<Activity | null>(null);
   const [selectedPack, setSelectedPack] = useState<Pack | null>(null);
@@ -137,10 +139,12 @@ export default function App() {
           {renderPage()}
         </div>
 
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
         {/* ── Bottom Tab Bar ── */}
         <div style={{
-          background: '#070f1c',
-          borderTop: '1px solid rgba(14,165,233,0.12)',
+          background: 'var(--bg-card)',
+          borderTop: '1px solid var(--border-subtle)',
           display: 'flex', flexShrink: 0, zIndex: 50,
           padding: '8px 4px',
           paddingBottom: 'calc(8px + env(safe-area-inset-bottom))',
@@ -157,8 +161,8 @@ export default function App() {
                   display: 'flex', flexDirection: 'column',
                   alignItems: 'center', gap: 4,
                   padding: '7px 2px',
-                  background: active ? 'rgba(14,165,233,0.10)' : 'transparent',
-                  border: `1px solid ${active ? 'rgba(14,165,233,0.22)' : 'transparent'}`,
+                  background: active ? 'var(--accent-dim)' : 'transparent',
+                  border: `1px solid ${active ? 'var(--border-mid)' : 'transparent'}`,
                   borderRadius: 12,
                   cursor: 'pointer',
                   transition: 'all 0.25s cubic-bezier(.23,1,.32,1)',
@@ -166,7 +170,7 @@ export default function App() {
                 }}
                 onMouseEnter={e => {
                   if (!active)
-                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(14,165,233,0.05)';
+                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-hover)';
                 }}
                 onMouseLeave={e => {
                   if (!active)
@@ -174,7 +178,7 @@ export default function App() {
                 }}
               >
                 <div style={{
-                  stroke: active ? '#0ea5e9' : '#3a5a7a',
+                  stroke: active ? 'var(--accent)' : 'var(--text-muted)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   filter: active ? 'drop-shadow(0 0 4px rgba(14,165,233,0.45))' : 'none',
                   transition: 'all 0.25s',
@@ -184,7 +188,7 @@ export default function App() {
                 <span style={{
                   fontSize: 8, letterSpacing: 0.4, textTransform: 'uppercase',
                   fontWeight: active ? 700 : 400,
-                  color: active ? '#0ea5e9' : '#3a5a7a',
+                  color: active ? 'var(--accent)' : 'var(--text-muted)',
                   transition: 'color 0.25s', whiteSpace: 'nowrap',
                 }}>
                   {TAB_LABELS[tabItem.id]?.[lang] ?? tabItem.label}

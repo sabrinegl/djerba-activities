@@ -1,24 +1,17 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #060c06;
+  background: var(--bg-deep);
   font-family: 'Lato', sans-serif;
-  color: #fff;
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #060c06; }
-::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-@keyframes floatAnim {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
-}
-@keyframes shimmer {
-  0%   { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
 @keyframes pulse {
   0%, 100% { opacity: 0.5; }
   50%       { opacity: 1; }

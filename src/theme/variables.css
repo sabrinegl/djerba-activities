@@ -1,32 +1,173 @@
-:root {
-  --gold:        #C9A84C;
-  --gold-light:  #F5E07A;
-  --gold-dark:   #8B6914;
+/* ═══════════════════════════════════════════
+   Djerba Activities — Ocean Blue (refined)
+   ═══════════════════════════════════════════ */
 
-  --bg:          #081018;
-  --bg-card:     #101B27;
-  --bg-dark:     #0B141F;
+:root,
+[data-theme="dark"] {
+  --bg-deep:      #0a1626;   /* moins noir, plus "slate navy" */
+  --bg-card:      #12233a;
+  --bg-elevated:  #17304d;
+  --bg-hover:     #1d3a5c;
 
-  --text-muted:  #C5CED8;
-  --text-dim:    #8E9AA8;
+  --accent:       #2b9ecc;   /* teal-bleu moins saturé que le sky-500 d'origine */
+  --accent-light: #5fb8dc;
+  --accent-dim:   rgba(43,158,204,0.16);
+  --accent-border:rgba(43,158,204,0.22);
+  --accent-glow:  rgba(43,158,204,0.24);
 
-  --border:      rgba(255,255,255,.08);
-  --green-deep:  #0f1f0f;
+  --cta:          #e8813c;  /* orange plus chaud, moins criard */
+  --cta-glow:     rgba(232,129,60,0.22);
 
-  /* Ionic overrides */
-  --ion-background-color: #060c06;
-  --ion-text-color: #ffffff;
-  --ion-color-warning: #C9A84C;
-  --ion-color-warning-contrast: #000000;
-  --ion-tab-bar-background: #0a140a;
-  --ion-tab-bar-border-color: rgba(201,168,76,0.18);
-  --ion-color-step-50: #0e1a0e;
+  --text-primary: #eef4f9;
+  --text-secondary:#93a6ba;
+  --text-muted:   #56697d;
+  --text-accent:  #5fb8dc;
+
+  --border-subtle: rgba(43,158,204,0.10);
+  --border-mid:    rgba(43,158,204,0.22);
+  --border-strong: rgba(43,158,204,0.45);
+
+  --green:        #25d366;
+  --green-bg:     rgba(37,211,102,0.08);
+  --green-border: rgba(37,211,102,0.22);
+  --red-required: #f0938c;
+
+  --ion-background-color: var(--bg-deep);
+  --ion-text-color: var(--text-primary);
+  --ion-color-primary: var(--accent);
+  --ion-color-primary-rgb: 43,158,204;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #268bb4;
+  --ion-color-primary-tint: #41a8d1;
+  --ion-color-warning: var(--accent);
+  --ion-color-warning-contrast: #ffffff;
+  --ion-tab-bar-background: var(--bg-card);
+  --ion-tab-bar-border-color: var(--border-subtle);
+  --ion-color-step-50: var(--bg-elevated);
   --ion-item-background: transparent;
+}
 
+[data-theme="light"] {
+  --bg-deep:      #f6f9fc;
+  --bg-card:      #ffffff;
+  --bg-elevated:  #eef3f8;
+  --bg-hover:     #e2ebf3;
 
-  --ion-color-primary: #0ea5e9;
-  --ion-color-primary-rgb: 14,165,233;
-  --ion-color-primary-contrast: #000000;
-  --ion-color-primary-shade: #0c91ce;
-  --ion-color-primary-tint: #26aef0;
+  --accent:       #1c7ea6;   /* même famille, foncée pour contraste sur blanc */
+  --accent-light: #2b9ecc;
+  --accent-dim:   rgba(28,126,166,0.08);
+  --accent-border:rgba(28,126,166,0.18);
+  --accent-glow:  rgba(28,126,166,0.16);
+
+  --cta:          #d9701f;
+  --cta-glow:     rgba(217,112,31,0.18);
+
+  --text-primary: #142433;
+  --text-secondary:#4b5f72;
+  --text-muted:   #8a99a8;
+  --text-accent:  #1c7ea6;
+
+  --border-subtle: rgba(28,126,166,0.12);
+  --border-mid:    rgba(28,126,166,0.24);
+  --border-strong: rgba(28,126,166,0.45);
+
+  --green:        #16a34a;
+  --green-bg:     rgba(22,163,74,0.08);
+  --green-border: rgba(22,163,74,0.20);
+  --red-required: #c0392b;
+
+  --ion-background-color: var(--bg-deep);
+  --ion-text-color: var(--text-primary);
+  --ion-color-primary: var(--accent);
+  --ion-color-primary-rgb: 28,126,166;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #196d90;
+  --ion-color-primary-tint: #338aae;
+  --ion-color-warning: var(--accent);
+  --ion-color-warning-contrast: #ffffff;
+  --ion-tab-bar-background: var(--bg-card);
+  --ion-tab-bar-border-color: var(--border-subtle);
+  --ion-color-step-50: var(--bg-elevated);
+  --ion-item-background: transparent;
+}
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ocean-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.ocean-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 8px 32px rgba(43,158,204,0.10);
+}
+
+.ocean-input {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.ocean-input:focus {
+  border-color: var(--accent);
+}
+
+.ocean-label {
+  color: var(--text-accent);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.accent-label {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-12px); }
+}
+
+.step-active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #000 !important;
 }

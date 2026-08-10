@@ -27,9 +27,8 @@ interface Props {
   setLang: (l: Lang) => void;
 }
 
-// Icônes SVG inline — modernes, style ligne
 const IconWave = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.55)" strokeWidth="1.4" strokeLinecap="round">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeOpacity="0.55" strokeWidth="1.4" strokeLinecap="round">
     <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2" />
     <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2" />
     <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2" />
@@ -37,7 +36,7 @@ const IconWave = () => (
 );
 
 const IconAnchor = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.45)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeOpacity="0.45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="5" r="3" />
     <line x1="12" y1="8" x2="12" y2="21" />
     <path d="M5 12H2a10 10 0 0020 0h-3" />
@@ -45,14 +44,14 @@ const IconAnchor = () => (
 );
 
 const IconCompass = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.45)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeOpacity="0.45" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76" />
   </svg>
 );
 
 const IconSun = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(249,115,22,0.5)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cta)" strokeOpacity="0.5" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="5" />
     <line x1="12" y1="1" x2="12" y2="3" />
     <line x1="12" y1="21" x2="12" y2="23" />
@@ -69,7 +68,7 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
   const [hRef, hInView] = useInView();
 
   const shimmerText: React.CSSProperties = {
-    background: 'linear-gradient(90deg, #0ea5e9, #38bdf8, #7dd3fc, #0ea5e9)',
+    background: 'linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent))',
     backgroundSize: '200%',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
@@ -78,10 +77,8 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
   };
 
   const floatingIcons = [
-    // Gauche
     { comp: <IconCompass />, x: '3%',  y: '20%', d: '0.8s' },
     { comp: <IconSun />,     x: '3%',  y: '62%', d: '2.1s' },
-    // Droite — même positions Y
     { comp: <IconWave />,    x: '93%', y: '20%', d: '0s'   },
     { comp: <IconAnchor />,  x: '93%', y: '62%', d: '1.4s' },
   ];
@@ -93,15 +90,14 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         gap: 10, padding: '12px 20px',
-        background: '#070f1c',
-        borderBottom: '1px solid rgba(14,165,233,0.10)',
+        background: 'var(--bg-card)',
+        borderBottom: '1px solid var(--border-subtle)',
       }}>
-        {/* Icône logo */}
         <div style={{
           width: 34, height: 34, borderRadius: 9, flexShrink: 0,
-          background: 'linear-gradient(135deg, #0ea5e9, #0369a1)',
+          background: 'linear-gradient(135deg, var(--accent), var(--accent-light))',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 4px 14px rgba(14,165,233,0.4)',
+          boxShadow: '0 4px 14px var(--accent-glow)',
         }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
             stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -109,15 +105,14 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
             <path d="M2 20h20" />
           </svg>
         </div>
-        {/* Nom */}
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
           <span style={{
             fontFamily: 'var(--font-serif)', fontWeight: 900,
-            fontSize: 17, color: '#f0f9ff', letterSpacing: 0.3,
+            fontSize: 17, color: 'var(--text-primary)', letterSpacing: 0.3,
           }}>Djerba</span>
           <span style={{
             fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-            fontSize: 11, color: '#0ea5e9', letterSpacing: 1.2,
+            fontSize: 11, color: 'var(--accent)', letterSpacing: 1.2,
             textTransform: 'uppercase',
           }}>Activities</span>
         </div>
@@ -134,12 +129,11 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
         <div style={{
           position: 'absolute', inset: 0,
           background: `
-            radial-gradient(ellipse 80% 60% at 55% 40%, rgba(10,40,80,0.9) 0%, transparent 70%),
-            linear-gradient(150deg, #060f1e 0%, #0a1e3a 55%, #060f1e 100%)
+            radial-gradient(ellipse 80% 60% at 55% 40%, var(--accent-dim) 0%, transparent 70%),
+            linear-gradient(150deg, var(--bg-deep) 0%, var(--bg-elevated) 55%, var(--bg-deep) 100%)
           `,
         }} />
 
-        {/* Icônes SVG flottantes */}
         {floatingIcons.map((f, i) => (
           <div key={i} style={{
             position: 'absolute', left: f.x, top: f.y,
@@ -159,25 +153,24 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
             transition: 'all 0.9s cubic-bezier(.23,1,.32,1)',
           }}
         >
-          {/* ✅ Badge location — simple texte, pas un bouton */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             marginBottom: 22,
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="rgba(14,165,233,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              stroke="var(--accent)" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
             <span style={{
-              color: 'rgba(14,165,233,0.75)',
+              color: 'var(--accent)',
               fontSize: 11, letterSpacing: 3.5,
               textTransform: 'uppercase', fontWeight: 500,
             }}>
               {t(T.home.badge, lang).replace(/✦/g, '').trim()}
             </span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-              stroke="rgba(14,165,233,0.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              stroke="var(--accent)" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
@@ -207,7 +200,7 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
             <IonButton
               color="primary" size="large" shape="round"
               onClick={() => setTab('activities')}
-              style={{ '--box-shadow': '0 8px 24px rgba(14,165,233,0.3)' } as React.CSSProperties}
+              style={{ '--box-shadow': '0 8px 24px var(--accent-glow)' } as React.CSSProperties}
             >
               {t(T.home.cta1, lang)}
             </IonButton>
@@ -223,7 +216,7 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
 
       {/* ── Stats ── */}
       <div style={{
-        background: 'linear-gradient(90deg, #080f1e, #0d1f35, #080f1e)',
+        background: 'var(--bg-card)',
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
         display: 'grid', gridTemplateColumns: 'repeat(4,1fr)',
@@ -279,12 +272,11 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
           ))}
         </div>
 
-        {/* CTA bas de page */}
         <div style={{ textAlign: 'center', marginTop: 48 }}>
           <IonButton
             color="primary" size="large" shape="round"
             onClick={() => setTab('booking')}
-            style={{ '--box-shadow': '0 8px 24px rgba(14,165,233,0.25)' } as React.CSSProperties}
+            style={{ '--box-shadow': '0 8px 24px var(--accent-glow)' } as React.CSSProperties}
           >
             📅 {t(T.nav.booking, lang)}
           </IonButton>

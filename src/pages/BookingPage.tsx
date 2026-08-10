@@ -9,7 +9,7 @@ import type { Lang } from '../i18n/translations';
 
 type Step = 1 | 2 | 3;
 
-const WHATSAPP_NUMBER = '21697096645';
+const WHATSAPP_NUMBER = '21694512405';
 
 interface Props {
   preselected?: Activity | null;
@@ -80,7 +80,7 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
     borderRadius: 'var(--r-sm)', padding: '12px 14px',
     color: 'var(--text-primary)', fontSize: 14, outline: 'none',
     fontFamily: 'inherit', boxSizing: 'border-box',
-    transition: 'border-color 0.3s', colorScheme: 'dark',
+    transition: 'border-color 0.3s', colorScheme: (document.documentElement.getAttribute('data-theme') || 'dark') as 'dark' | 'light',
   };
   const labelStyle: React.CSSProperties = {
     color: 'var(--text-accent)', fontSize: 11, letterSpacing: 1,

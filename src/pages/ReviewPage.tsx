@@ -4,7 +4,7 @@ import { IonButton } from '@ionic/react';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import type { Lang } from '../i18n/translations';
 
-const WHATSAPP_NUMBER = '21697096645';
+const WHATSAPP_NUMBER = '21694512405';
 
 interface Props {
   lang: Lang;
@@ -81,7 +81,7 @@ export default function ReviewPage({ lang, setLang }: Props) {
     borderRadius: 'var(--r-sm)', padding: '12px 14px',
     color: 'var(--text-primary)', fontSize: 14, outline: 'none',
     fontFamily: 'inherit', boxSizing: 'border-box',
-    transition: 'border-color 0.3s', colorScheme: 'dark',
+    transition: 'border-color 0.3s', colorScheme: (document.documentElement.getAttribute('data-theme') || 'dark') as 'dark' | 'light',
   };
   const labelStyle: React.CSSProperties = {
     color: 'var(--text-accent)', fontSize: 11, letterSpacing: 1,
