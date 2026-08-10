@@ -100,6 +100,7 @@ export default function ActivitiesPage({ onBook, lang, setLang }: Props) {
               <ActivityCard
                 key={a.id}
                 activity={a}
+                lang={lang}
                 index={i}
                 onBook={onBook}
                 bookLabel={t(T.activities.book_btn, lang)}

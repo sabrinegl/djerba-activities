@@ -1,13 +1,14 @@
 import StarRow from './StarRow';
+import { t } from '../i18n/translations';
+import type { Lang } from '../i18n/translations';
 
 interface Review {
   name: string;
   flag: string;
-  text: string;
+  text: Record<Lang, string>;
   stars: number;
 }
 
-// Couleur d'avatar selon le drapeau/pays
 const FLAG_COLOR: Record<string, { bg: string; color: string; country: string }> = {
   '🇫🇷': { bg: '#1d4ed8', color: '#fff', country: 'FR' },
   '🇩🇿': { bg: '#15803d', color: '#fff', country: 'DZ' },
@@ -18,13 +19,18 @@ const FLAG_COLOR: Record<string, { bg: string; color: string; country: string }>
   '🇹🇳': { bg: '#991b1b', color: '#fff', country: 'TN' },
 };
 
+const VERIFIED: Record<Lang, string> = {
+  fr: 'Client vérifié ✓', en: 'Verified client ✓', de: 'Verifizierter Kunde ✓',
+  ru: 'Проверенный клиент ✓', it: 'Cliente verificato ✓',
+};
+
 interface Props {
   review: Review;
+  lang: Lang;
 }
 
-export default function ReviewCard({ review: r }: Props) {
-  const flagInfo = FLAG_COLOR[r.flag] ?? { bg: '#0ea5e9', color: '#fff', country: '??' };
-  // Initiale du prénom
+export default function ReviewCard({ review: r, lang }: Props) {
+  const flagInfo = FLAG_COLOR[r.flag] ?? { bg: 'var(--accent)', color: '#fff', country: '??' };
   const initial = r.name.trim().charAt(0).toUpperCase();
 
   return (
@@ -36,8 +42,8 @@ export default function ReviewCard({ review: r }: Props) {
       display: 'flex', flexDirection: 'column', gap: 12,
     }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(14,165,233,0.4)';
-        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(14,165,233,0.08)';
+        (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border-strong)';
+        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px var(--accent-glow)';
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border-subtle)';
@@ -50,12 +56,10 @@ export default function ReviewCard({ review: r }: Props) {
         color: 'var(--text-secondary)', fontSize: 13,
         lineHeight: 1.75, fontStyle: 'italic', margin: 0, flex: 1,
       }}>
-        "{r.text}"
+        "{t(r.text, lang)}"
       </p>
 
-      {/* Avatar + nom */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        {/* Cercle avec initiale + badge pays */}
         <div style={{ position: 'relative', flexShrink: 0 }}>
           <div style={{
             width: 38, height: 38, borderRadius: '50%',
@@ -66,10 +70,9 @@ export default function ReviewCard({ review: r }: Props) {
           }}>
             {initial}
           </div>
-          {/* Badge pays en bas à droite */}
           <div style={{
             position: 'absolute', bottom: -2, right: -4,
-            background: '#0d1f35',
+            background: 'var(--bg-elevated)',
             border: '1px solid var(--border-subtle)',
             borderRadius: 4, padding: '1px 4px',
             fontSize: 8, fontWeight: 700,
@@ -84,7 +87,7 @@ export default function ReviewCard({ review: r }: Props) {
             {r.name}
           </div>
           <div style={{ color: 'var(--text-muted)', fontSize: 11 }}>
-            Client vérifié ✓
+            {VERIFIED[lang] ?? VERIFIED.fr}
           </div>
         </div>
       </div>

@@ -47,10 +47,10 @@ export default function PackageBookingPage({ pack, onBack, lang, setLang }: Prop
       `━━━━━━━━━━━━━━━━━━━`,
       `✨ FORMULE`,
       `━━━━━━━━━━━━━━━━━━━`,
-      `Pack      : ${pack.name}`,
+      `Pack      : ${t(pack.name, lang)}`,
       `Prix      : ${pack.price} / pers.`,
       `Inclus    :`,
-      ...pack.features.map(f => `  • ${f}`),
+      ...(pack.features[lang] ?? pack.features.fr).map(f => `  • ${f}`),
       ``,
       `📅 Date      : ${new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
@@ -137,24 +137,24 @@ export default function PackageBookingPage({ pack, onBack, lang, setLang }: Prop
             borderRadius: 14, padding: '16px 18px', marginBottom: 24,
             position: 'relative', overflow: 'hidden',
           }}>
-            {pack.badge && (
+            {t(pack.badge, lang) && (
               <span style={{
                 position: 'absolute', top: 12, right: 12,
                 background: 'var(--accent)', color: '#000',
                 fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 20,
-              }}>{pack.badge}</span>
+              }}>{t(pack.badge, lang)}</span>
             )}
             <p style={{ color: 'var(--accent)', fontSize: 10, letterSpacing: 2,
               textTransform: 'uppercase', marginBottom: 6 }}>✨ Formule choisie</p>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 10 }}>
               <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20,
-                fontWeight: 700, color: 'var(--text-primary)' }}>{pack.name}</span>
+                fontWeight: 700, color: 'var(--text-primary)' }}>{t(pack.name, lang)}</span>
               <span style={{ fontFamily: 'var(--font-serif)', fontSize: 22,
                 fontWeight: 900, color: 'var(--accent)' }}>{pack.price}</span>
               <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>/ pers.</span>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px' }}>
-              {pack.features.map((f, i) => (
+              {(pack.features[lang] ?? pack.features.fr).map((f, i) => (
                 <span key={i} style={{ color: 'var(--text-secondary)', fontSize: 12 }}>
                   <span style={{ color: 'var(--accent)', marginRight: 4 }}>✓</span>{f}
                 </span>
@@ -326,7 +326,7 @@ export default function PackageBookingPage({ pack, onBack, lang, setLang }: Prop
                     ✨ Formule
                   </p>
                   {[
-                    { l: 'Pack',                       v: pack.name },
+                    { l: 'Pack',                       v: t(pack.name, lang) },
                     { l: t(T.booking.recap_price, lang), v: `${pack.price} × ${people}` },
                     { l: t(T.booking.recap_date, lang),  v: new Date(date + 'T00:00:00').toLocaleDateString(
                         lang === 'ru' ? 'ru-RU' : lang === 'de' ? 'de-DE' : lang === 'en' ? 'en-GB' : 'fr-FR',

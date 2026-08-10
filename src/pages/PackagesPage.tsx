@@ -9,7 +9,7 @@ import type { Lang } from '../i18n/translations';
 interface Props {
   lang: Lang;
   setLang: (l: Lang) => void;
-  onBookPack: (pack: Pack) => void; // ← ouvre PackageBookingPage
+  onBookPack: (pack: Pack) => void;
 }
 
 export default function PackagesPage({ lang, setLang, onBookPack }: Props) {
@@ -41,31 +41,31 @@ export default function PackagesPage({ lang, setLang, onBookPack }: Props) {
               <div key={i}
                 style={{
                   background: 'var(--bg-card)', borderRadius: 18,
-                  border: '1px solid rgba(14,165,233,0.25)',
+                  border: '1px solid var(--border-mid)',
                   padding: '26px 22px', position: 'relative', overflow: 'hidden',
                   transition: 'transform 0.3s, box-shadow 0.3s',
                   display: 'flex', flexDirection: 'column',
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-5px)';
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px rgba(14,165,233,0.15)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px var(--accent-glow)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.transform = 'none';
                   (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
                 }}>
 
-                {p.badge && (
+                {t(p.badge, lang) && (
                   <span style={{
                     position: 'absolute', top: 14, right: 14,
                     background: 'var(--accent)', color: '#000',
                     fontSize: 9, fontWeight: 800,
                     padding: '3px 10px', borderRadius: 20,
-                  }}>{p.badge}</span>
+                  }}>{t(p.badge, lang)}</span>
                 )}
 
                 <h3 style={{ fontFamily: 'var(--font-serif)',
-                  fontSize: 22, color: 'var(--text-primary)', marginBottom: 4 }}>{p.name}</h3>
+                  fontSize: 22, color: 'var(--text-primary)', marginBottom: 4 }}>{t(p.name, lang)}</h3>
 
                 <div style={{ marginBottom: 20 }}>
                   <span style={{ fontFamily: 'var(--font-serif)',
@@ -76,7 +76,7 @@ export default function PackagesPage({ lang, setLang, onBookPack }: Props) {
                 </div>
 
                 <div style={{ marginBottom: 22, flex: 1 }}>
-                  {p.features.map((f, j) => (
+                  {(p.features[lang] ?? p.features.fr).map((f, j) => (
                     <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 8,
                       marginBottom: 8, color: 'var(--text-secondary)', fontSize: 13 }}>
                       <span style={{ color: 'var(--accent)', fontWeight: 700 }}>✓</span>{f}
@@ -84,7 +84,6 @@ export default function PackagesPage({ lang, setLang, onBookPack }: Props) {
                   ))}
                 </div>
 
-                {/* ✅ Ouvre PackageBookingPage avec ce pack */}
                 <IonButton
                   expand="block"
                   fill={i === 1 ? 'solid' : 'outline'}

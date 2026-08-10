@@ -268,7 +268,7 @@ export default function HomePage({ setTab, lang, setLang }: Props) {
           gap: 18,
         }}>
           {REVIEWS.map((r, i) => (
-            <ReviewCard key={i} review={r} />
+            <ReviewCard key={i} review={r} lang={lang} />
           ))}
         </div>
 

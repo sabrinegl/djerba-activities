@@ -2,10 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import type { Activity } from '../data/data';
 import { IonButton } from '@ionic/react';
 import React from 'react';
+import { t } from '../i18n/translations';
+import type { Lang } from '../i18n/translations';
 
 interface Props {
   activity: Activity;
   index: number;
+  lang: Lang;
   onBook?: (activity: Activity) => void;
   bookLabel?: string;
 }
@@ -24,7 +27,7 @@ function useInView(threshold = 0.1) {
   return [ref, inView] as const;
 }
 
-export default function ActivityCard({ activity: a, index: i, onBook, bookLabel = 'Réserver →' }: Props) {
+export default function ActivityCard({ activity: a, index: i, lang, onBook, bookLabel = 'Réserver →' }: Props) {
   const [ref, inView] = useInView();
   const [hov, setHov] = useState(false);
 
@@ -48,9 +51,8 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
         flexDirection: 'column',
       }}
     >
-      {/* Image */}
       <div style={{ position: 'relative', height: 170, overflow: 'hidden' }}>
-        <img src={a.img} alt={a.title}
+        <img src={a.img} alt={t(a.title, lang)}
           style={{
             width: '100%', height: '100%', objectFit: 'cover',
             transform: hov ? 'scale(1.07)' : 'scale(1)',
@@ -63,19 +65,18 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
         }} />
       </div>
 
-      {/* Body */}
       <div style={{ padding: '16px 18px 18px', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <h3 style={{
           margin: '0 0 6px', color: 'var(--text-primary)', fontSize: 15,
           fontFamily: 'var(--font-serif)',
         }}>
-          {a.title}
+          {t(a.title, lang)}
         </h3>
         <p style={{
           margin: '0 0 14px', color: 'var(--text-secondary)',
           fontSize: 12.5, lineHeight: 1.6, flex: 1,
         }}>
-          {a.desc}
+          {t(a.desc, lang)}
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
@@ -83,10 +84,10 @@ export default function ActivityCard({ activity: a, index: i, onBook, bookLabel 
               color: 'var(--accent)', fontWeight: 800, fontSize: 17,
               fontFamily: 'var(--font-serif)',
             }}>
-              {a.price}
+              {t(a.price, lang)}
             </span>
             <span style={{ color: 'var(--text-muted)', fontSize: 11, marginLeft: 4 }}>
-              {a.unit}
+              {t(a.unit, lang)}
             </span>
           </div>
 

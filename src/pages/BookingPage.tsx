@@ -52,7 +52,7 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
       `━━━━━━━━━━━━━━━━━━━`,
       `🎯 RÉSERVATION`,
       `━━━━━━━━━━━━━━━━━━━`,
-      `Activité  : ${activity?.title}`,
+      `Activité  : ${activity ? t(activity.title, lang) : ''}`,
       `Date      : ${new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
       })}`,
@@ -166,16 +166,16 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
                     }}>
                     <div style={{ width: 48, height: 48, borderRadius: 12,
                       overflow: 'hidden', flexShrink: 0 }}>
-                      <img src={a.img} alt={a.title}
+                      <img src={a.img} alt={t(a.title, lang)}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
                         <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: 14,
-                          fontFamily: 'var(--font-serif)' }}>{a.title}</span>
+                          fontFamily: 'var(--font-serif)' }}>{t(a.title, lang)}</span>
                       </div>
-                      <span style={{ color: 'var(--accent)', fontSize: 13, fontWeight: 700 }}>{a.price}</span>
-                      <span style={{ color: 'var(--text-muted)', fontSize: 12, marginLeft: 4 }}>{a.unit}</span>
+                      <span style={{ color: 'var(--accent)', fontSize: 13, fontWeight: 700 }}>{t(a.price, lang)}</span>
+                      <span style={{ color: 'var(--text-muted)', fontSize: 12, marginLeft: 4 }}>{t(a.unit, lang)}</span>
                     </div>
                     <div style={{
                       width: 20, height: 20, borderRadius: '50%', flexShrink: 0,
@@ -204,7 +204,7 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
                 display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 44, height: 44, borderRadius: 10,
                   overflow: 'hidden', flexShrink: 0 }}>
-                  <img src={activity?.img} alt={activity?.title}
+                  <img src={activity?.img} alt={activity ? t(activity.title, lang) : ''}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1 }}>
@@ -213,7 +213,7 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
                   </span>
                   <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: 14,
                     fontFamily: 'var(--font-serif)' }}>
-                    {activity?.title}
+                    {activity ? t(activity.title, lang) : ''}
                   </span>
                 </div>
                 <button onClick={goBackToStep1} style={{
@@ -346,7 +346,7 @@ export default function BookingPage({ preselected, onClearPreselected, lang, set
                 borderRadius: 18, padding: '22px', marginBottom: 20 }}>
 
                 <div style={{ height: 130, borderRadius: 12, overflow: 'hidden', marginBottom: 18 }}>
-                  <img src={activity?.img} alt={activity?.title}
+                  <img src={activity?.img} alt={activity ? t(activity.title, lang) : ''}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
 
