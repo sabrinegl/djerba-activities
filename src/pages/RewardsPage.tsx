@@ -70,9 +70,9 @@ function ProgressBar({ points }: { points: number }) {
         <div style={{
           height: '100%', borderRadius: 99,
           width: `${pct}%`,
-          background: 'linear-gradient(90deg, #0ea5e9, #38bdf8)',
+          background: 'linear-gradient(90deg, var(--accent), var(--accent-light))',
           transition: 'width 1s cubic-bezier(.23,1,.32,1)',
-          boxShadow: '0 0 8px rgba(14,165,233,0.5)',
+          boxShadow: '0 0 8px var(--accent-glow)',
         }} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
@@ -112,7 +112,8 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
     borderRadius: 'var(--r-sm)', padding: '14px 16px',
     color: 'var(--text-primary)', fontSize: 16, outline: 'none',
     fontFamily: 'var(--font-serif)', boxSizing: 'border-box',
-    transition: 'border-color 0.3s', colorScheme: (document.documentElement.getAttribute('data-theme') || 'dark') as 'dark' | 'light',
+    transition: 'border-color 0.3s',
+    colorScheme: (document.documentElement.getAttribute('data-theme') || 'dark') as 'dark' | 'light',
     letterSpacing: 2, textTransform: 'uppercase' as const, textAlign: 'center' as const,
   };
 
@@ -154,7 +155,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                 onBlur={e => (e.target.style.borderColor = 'var(--border-subtle)')}
               />
               {error && (
-                <p style={{ color: '#f87171', fontSize: 12, textAlign: 'center', marginTop: 10 }}>
+                <p style={{ color: 'var(--red-required)', fontSize: 12, textAlign: 'center', marginTop: 10 }}>
                   ❌ {tl('not_found', lang)}
                 </p>
               )}
@@ -173,9 +174,9 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
           {/* ── Résultat client ── */}
           {client && (
             <div>
-              {/* Score — ✅ plus de background dupliqué */}
+              {/* Score */}
               <div style={{
-                backgroundImage: 'linear-gradient(135deg, #0d1f35, #0a1628)',
+                background: 'var(--bg-card)',
                 border: '1px solid var(--border-mid)',
                 borderRadius: 18, padding: '24px', marginBottom: 16,
               }}>
@@ -190,7 +191,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                 <div style={{ textAlign: 'center', marginBottom: 8 }}>
                   <span style={{ fontFamily: 'var(--font-serif)', fontSize: 64,
                     fontWeight: 900, color: 'var(--accent)',
-                    filter: 'drop-shadow(0 0 20px rgba(14,165,233,0.4))' }}>
+                    filter: 'drop-shadow(0 0 20px var(--accent-glow))' }}>
                     {client.points}
                   </span>
                   <span style={{ color: 'var(--text-muted)', fontSize: 16, marginLeft: 8 }}>pts</span>
@@ -202,7 +203,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                 <ProgressBar points={client.points} />
               </div>
 
-              {/* Récompenses — ✅ r.reward[lang as keyof typeof r.reward] */}
+              {/* Récompenses */}
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)',
                 borderRadius: 18, padding: '20px', marginBottom: 16 }}>
                 <p style={{ color: 'var(--accent)', fontSize: 11, letterSpacing: 1,
@@ -211,13 +212,12 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                   {REWARDS.map((r, i) => {
                     const unlocked = client.points >= r.points;
                     const missing  = r.points - client.points;
-                    // ✅ cast correct pour accéder à la langue
                     const rewardText = r.reward[lang as keyof typeof r.reward] ?? r.reward.fr;
                     return (
                       <div key={i} style={{
                         display: 'flex', alignItems: 'center', gap: 12,
                         padding: '14px', borderRadius: 12,
-                        background: unlocked ? 'rgba(14,165,233,0.08)' : 'var(--bg-elevated)',
+                        background: unlocked ? 'var(--accent-dim)' : 'var(--bg-elevated)',
                         border: `1px solid ${unlocked ? 'var(--border-mid)' : 'var(--border-subtle)'}`,
                         opacity: unlocked ? 1 : 0.65,
                         transition: 'all 0.3s',
@@ -229,7 +229,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                             {rewardText}
                           </div>
                           <div style={{ fontSize: 11,
-                            color: unlocked ? '#4ade80' : 'var(--text-muted)' }}>
+                            color: unlocked ? 'var(--green)' : 'var(--text-muted)' }}>
                             {unlocked
                               ? tl('unlocked', lang)
                               : `${tl('locked', lang)} ${missing} ${tl('pts_needed', lang)}`}
@@ -266,7 +266,7 @@ export default function RewardsPage({ lang, setLang, setTab }: Props) {
                         <span style={{ color: 'var(--text-secondary)', fontSize: 13 }}>
                           ✓ {h.replace(/\+\d+/, '').trim()}
                         </span>
-                        <span style={{ color: '#4ade80', fontWeight: 700, fontSize: 13 }}>
+                        <span style={{ color: 'var(--green)', fontWeight: 700, fontSize: 13 }}>
                           {h.match(/\+\d+/)?.[0] ?? ''} pts
                         </span>
                       </div>
