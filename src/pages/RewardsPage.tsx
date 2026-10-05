@@ -4,7 +4,7 @@ import { REWARDS } from '../data/data';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import type { Lang } from '../i18n/translations';
 
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQL2N9SGldgY2u4SmT-QQqHmH7a2eQ2utSxwNJh4UYpC_rZW4U-BnDduHTUVjjXQL1ESZWeoOH6AQsi/pub?gid=0&single=true&output=csv';
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPk12IcMq88txm03F4Z8YM7-LSSsHa-kUsK8JryCBEI7K1U_EY3IH3vssc7QcZ4It3LGLNr_gahl6c/pub?output=csv';
 
 interface Props {
   lang: Lang;
